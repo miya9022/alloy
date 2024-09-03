@@ -1,17 +1,19 @@
 use super::error::MulticallError;
-use crate::{
-	multicall::{
-		constants,
-		contract::IMulticall3::{self, IMulticall3Instance},
-	},
-	CallBuilder, CallDecoder, DynCallBuilder,
-};
+// use crate::{
+// 	multicall::{
+// 		constants,
+// 		contract::IMulticall3::{self, IMulticall3Instance},
+// 	},
+// 	CallBuilder, CallDecoder, DynCallBuilder,
+// };
 use alloy_dyn_abi::DynSolValue;
 use alloy_json_abi::Function;
 use alloy_primitives::{Address, Bytes, U256};
 use alloy_provider::Provider;
 use std::{marker::PhantomData, result::Result as StdResult};
-use IMulticall3::Result as MulticallResult;
+use alloy_contract::{CallBuilder, CallDecoder, DynCallBuilder};
+use crate::{constants, IMulticall3, IMulticall3::Result as MulticallResult};
+use IMulticall3::IMulticall3Instance;
 
 /// Alias for [std::result::Result]<T, [MulticallError]>
 pub type Result<T> = std::result::Result<T, MulticallError>;
@@ -114,11 +116,12 @@ impl MulticallVersion {
 ///
 /// # Example
 /// ```no_run
-/// use alloy_contract::{ContractInstance, Interface, Multicall};
 /// use alloy_network::Ethereum;
 /// use alloy_primitives::address;
 /// use alloy_provider::{ProviderBuilder, ReqwestProvider};
 /// use alloy_sol_types::sol;
+/// use alloy_contract::{ContractInstance, Interface};
+/// use alloy_contract_multicall::Multicall;
 ///
 /// sol! {
 /// #[sol(rpc, abi)]

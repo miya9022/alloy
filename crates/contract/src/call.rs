@@ -147,7 +147,7 @@ impl<T, P, D, N: Network> AsRef<N::TransactionRequest> for CallBuilder<T, P, D, 
 
 // See [`ContractInstance`].
 impl<T: Transport + Clone, P: Provider<T, N>, N: Network> DynCallBuilder<T, P, N> {
-    pub(crate) fn new_dyn(
+    pub fn new_dyn(
         provider: P,
         address: &Address,
         function: &Function,
@@ -163,6 +163,10 @@ impl<T: Transport + Clone, P: Provider<T, N>, N: Network> DynCallBuilder<T, P, N
 
     pub fn get_to(&self) -> Address {
         self.request.to().unwrap_or(Address::ZERO)
+    }
+
+    pub fn get_decoder(&self) -> Function {
+        self.decoder.clone()
     }
 
     /// Clears the decoder, returning a raw call builder.

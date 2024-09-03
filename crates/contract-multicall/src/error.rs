@@ -1,4 +1,4 @@
-use crate::error::Error as ContractError;
+use alloy_contract::Error as ContractError;
 use alloy_transport::TransportError;
 
 /// Errors when interacting with a Multicall contract.

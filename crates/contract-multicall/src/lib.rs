@@ -9,9 +9,18 @@ pub use contract::IMulticall3;
 /// Middleware for creating and handling multicalls
 mod middleware;
 pub use middleware::{
-	Call as MulticallSubCall, Multicall, MulticallVersion, Result as MulticallResult,
+    Call as MulticallSubCall, Multicall, MulticallVersion, Result as MulticallResult,
 };
 
 /// Multicall specific errors
 mod error;
 pub use error::MulticallError;
+
+// Not public API.
+// NOTE: please avoid changing the API of this module due to its use in the `sol!` macro.
+#[doc(hidden)]
+pub mod private {
+    pub use alloy_network::{Ethereum, Network};
+    pub use alloy_provider::Provider;
+    pub use alloy_transport::Transport;
+}

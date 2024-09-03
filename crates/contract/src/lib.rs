@@ -28,10 +28,8 @@ mod instance;
 pub use instance::*;
 
 mod call;
-mod multicall;
 
 pub use call::*;
-pub use multicall::*;
 
 // Not public API.
 // NOTE: please avoid changing the API of this module due to its use in the `sol!` macro.
