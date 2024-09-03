@@ -28,13 +28,14 @@ alloy-transport.workspace = true
 alloy-dyn-abi = { workspace = true, features = ["std"] }
 alloy-json-abi.workspace = true
 alloy-primitives.workspace = true
-alloy-sol-types.workspace = true
+alloy-sol-types = { workspace = true, features = ["json"] }
 
 futures-util.workspace = true
 futures.workspace = true
 thiserror.workspace = true
 
 alloy-pubsub = { workspace = true, optional = true }
+alloy-chains.workspace = true
 
 [dev-dependencies]
 alloy-rpc-client = { workspace = true, features = ["pubsub", "ws"] }

@@ -161,6 +161,10 @@ impl<T: Transport + Clone, P: Provider<T, N>, N: Network> DynCallBuilder<T, P, N
         .to(*address))
     }
 
+    pub fn get_to(&self) -> Address {
+        self.request.to().unwrap_or(Address::ZERO)
+    }
+
     /// Clears the decoder, returning a raw call builder.
     #[inline]
     pub fn clear_decoder(self) -> RawCallBuilder<T, P, N> {
